@@ -57,15 +57,15 @@ const ContactUs = () => {
   };
 
   return (
-    <section id="contact" className="section-container bg-white">
+    <section id="contact" className="section-container bg-ats-white">
       <div className="container mx-auto">
-        <h2 className="section-title text-center">Contact <span className="text-ats-orange">Us</span></h2>
+        <h2 className="section-title text-center">Contact <span className="text-ats-blue">Us</span></h2>
         <p className="section-subtitle text-center">
           Ready to make your move stress-free? Get in touch with us today for a free quote!
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-          <div className="bg-ats-orange rounded-xl p-8 text-white">
+          <div className="bg-ats-blue rounded-xl p-8 text-white">
             <h3 className="text-2xl font-semibold mb-6">Get A Free Quote</h3>
             <p className="mb-8">
               Fill out the form, and our team will get back to you with a detailed quote tailored to your specific requirements.
@@ -102,7 +102,7 @@ const ContactUs = () => {
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block mb-2 text-sm font-medium text-ats-black">
+                <label htmlFor="name" className="block mb-2 text-sm font-medium text-ats-navy">
                   Name *
                 </label>
                 <Input
@@ -118,7 +118,7 @@ const ContactUs = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-ats-black">
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-ats-navy">
                     Email
                   </label>
                   <Input
@@ -132,7 +132,7 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block mb-2 text-sm font-medium text-ats-black">
+                  <label htmlFor="phone" className="block mb-2 text-sm font-medium text-ats-navy">
                     Phone Number *
                   </label>
                   <Input
@@ -148,7 +148,7 @@ const ContactUs = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="moveFrom" className="block mb-2 text-sm font-medium text-ats-black">
+                  <label htmlFor="moveFrom" className="block mb-2 text-sm font-medium text-ats-navy">
                     Moving From *
                   </label>
                   <Input
@@ -162,7 +162,7 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="moveTo" className="block mb-2 text-sm font-medium text-ats-black">
+                  <label htmlFor="moveTo" className="block mb-2 text-sm font-medium text-ats-navy">
                     Moving To *
                   </label>
                   <Input
@@ -177,7 +177,7 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="moveDate" className="block mb-2 text-sm font-medium text-ats-black">
+                <label htmlFor="moveDate" className="block mb-2 text-sm font-medium text-ats-navy">
                   Preferred Moving Date
                 </label>
                 <div className="relative">
@@ -194,7 +194,7 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block mb-2 text-sm font-medium text-ats-black">
+                <label htmlFor="message" className="block mb-2 text-sm font-medium text-ats-navy">
                   Additional Details
                 </label>
                 <Textarea

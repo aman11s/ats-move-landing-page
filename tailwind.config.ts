@@ -63,13 +63,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors based on brand requirements
+				// Updated colors based on brand requirements
 				ats: {
-					orange: '#F26522',
-					beige: '#FDF6EF',
-					black: '#1E1E1E',
-					brown: '#C49E6C',
-					gray: '#4A4A4A',
+					blue: '#1F6FEB', // Replaced orange with blue
+					aqua: '#4ED9C0', // Replaced beige with aqua green
+					navy: '#1A1A2E', // Replaced black with navy
+					yellow: '#FFCB05', // Replaced brown with sun yellow
+					gray: '#4A4A4A', // Kept the same
+					white: '#F9FAFC', // Updated white
 				}
 			},
 			borderRadius: {

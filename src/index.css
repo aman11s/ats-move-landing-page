@@ -99,12 +99,12 @@
   }
 
   body {
-    @apply bg-ats-beige text-ats-black font-poppins;
+    @apply bg-ats-aqua text-ats-navy font-poppins;
   }
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-bold mb-6 text-ats-black;
+  @apply text-3xl md:text-4xl font-bold mb-6 text-ats-navy;
 }
 
 .section-subtitle {
@@ -116,9 +116,9 @@
 }
 
 .btn-primary {
-  @apply bg-ats-orange text-white font-medium py-3 px-6 rounded-lg transition-all hover:bg-opacity-90 hover:shadow-lg;
+  @apply bg-ats-yellow text-ats-navy font-medium py-3 px-6 rounded-lg transition-all hover:bg-opacity-90 hover:shadow-lg;
 }
 
 .card {
-  @apply bg-white p-6 rounded-xl shadow-md transition-all hover:shadow-lg;
+  @apply bg-ats-white p-6 rounded-xl shadow-md transition-all hover:shadow-lg;
 }
