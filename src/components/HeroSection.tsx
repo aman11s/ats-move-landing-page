@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="pt-28 pb-16 md:pt-40 md:pb-24 px-4 bg-gradient-to-b from-ats-white to-ats-aqua"
+      className="pt-28 pb-16 md:pt-40 md:pb-24 px-4 bg-gradient-to-b from-ats-white to-ats-paleblue"
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">

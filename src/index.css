@@ -99,7 +99,7 @@
   }
 
   body {
-    @apply bg-ats-aqua text-ats-navy font-poppins;
+    @apply bg-ats-paleblue text-ats-navy font-poppins;
   }
 }
 
@@ -116,7 +116,7 @@
 }
 
 .btn-primary {
-  @apply bg-ats-yellow text-ats-navy font-medium py-3 px-6 rounded-lg transition-all hover:bg-opacity-90 hover:shadow-lg;
+  @apply bg-ats-skyblue text-ats-white font-medium py-3 px-6 rounded-lg transition-all hover:bg-ats-blue hover:shadow-lg;
 }
 
 .card {

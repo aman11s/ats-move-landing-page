@@ -63,14 +63,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated colors based on brand requirements
+				// Updated colors based on new refined palette
 				ats: {
-					blue: '#1F6FEB', // Replaced orange with blue
-					aqua: '#4ED9C0', // Replaced beige with aqua green
-					navy: '#1A1A2E', // Replaced black with navy
-					yellow: '#FFCB05', // Replaced brown with sun yellow
+					blue: '#1F6FEB', // Primary blue
+					skyblue: '#4BB4F7', // Sky blue for CTAs (replacing yellow)
+					navy: '#1A1A2E', // Deep navy
+					paleblue: '#EAF2FC', // Pale blue tint (replacing aqua)
+					steel: '#5A7D9A', // Steel blue (replacing yellow)
 					gray: '#4A4A4A', // Kept the same
-					white: '#F9FAFC', // Updated white
+					white: '#F9FAFC', // Off-white
 				}
 			},
 			borderRadius: {
