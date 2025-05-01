@@ -53,7 +53,8 @@ const ContactUs = () => {
                 <Phone className="mr-4 flex-shrink-0" />
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <p>+91 98765 43210</p>
+                  <p>+91 9377111606</p>
+                  <p>+91 9974310525</p>
                 </div>
               </div>
               
@@ -61,7 +62,7 @@ const ContactUs = () => {
                 <Mail className="mr-4 flex-shrink-0" />
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p>info@atspackersmovers.com</p>
+                  <p>ambition.trans@gmail.com</p>
                 </div>
               </div>
               

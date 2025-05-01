@@ -43,8 +43,8 @@ const Footer = () => {
               <p className="mb-2">123 Relocation Street</p>
               <p className="mb-2">Transport Nagar</p>
               <p className="mb-2">Mumbai, Maharashtra - 400001</p>
-              <p className="mb-2">Phone: +91 98765 43210</p>
-              <p className="mb-2">Email: info@atspackersmovers.com</p>
+              <p className="mb-2">Phone: +91 9377111606, +91 9974310525</p>
+              <p className="mb-2">Email: ambition.trans@gmail.com</p>
             </address>
           </div>
         </div>
