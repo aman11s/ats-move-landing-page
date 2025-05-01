@@ -11,18 +11,18 @@ type ProcessStepProps = {
 const ProcessStep = ({ step, title, description, icon }: ProcessStepProps) => {
   return (
     <div className="flex flex-col md:flex-row gap-6 items-center md:items-start mb-12 relative">
-      <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-ats-blue rounded-full flex items-center justify-center shadow-lg z-10 relative">
+      <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-ats-blue rounded-full flex items-center justify-center shadow-lg z-10">
         <div className="text-white flex items-center justify-center">
           {icon}
-        </div>
-        <div className="absolute -top-2 -left-2 md:-top-3 md:-left-3 bg-ats-blue text-white text-sm font-bold px-3 py-1 rounded-full">
-          Step {step}
         </div>
       </div>
       
       <div className="flex-1">
         <div className="bg-ats-white p-6 rounded-xl shadow-md">
-          <h3 className="text-xl font-semibold mb-3 text-ats-navy">{title}</h3>
+          <div className="absolute -top-2 left-5 md:left-7 bg-ats-blue text-white text-sm font-bold px-3 py-1 rounded-full">
+            Step {step}
+          </div>
+          <h3 className="text-xl font-semibold mb-3 text-ats-navy pt-4">{title}</h3>
           <p className="text-ats-gray">{description}</p>
         </div>
       </div>
