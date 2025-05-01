@@ -1,59 +1,36 @@
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { Calendar, FileText, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { useForm } from 'react-hook-form';
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  moveFrom: string;
+  moveTo: string;
+  moveDate: string;
+  message: string;
+};
 
 const ContactUs = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    moveFrom: '',
-    moveTo: '',
-    moveDate: '',
-    message: ''
-  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = (data: FormData) => {
+    // This function will be overridden by the form's action attribute
+    // But we'll use it to show our success message and reset the form
+    setIsSubmitted(true);
+    reset();
     
-    // Form validation
-    if (!formData.name || !formData.phone || !formData.moveFrom || !formData.moveTo) {
-      toast({
-        title: "Error",
-        description: "Please fill in all required fields.",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    // In a real application, you'd send this data to your backend
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: "Quote Request Sent",
-      description: "We'll get back to you with a free quote shortly!",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      moveFrom: '',
-      moveTo: '',
-      moveDate: '',
-      message: ''
-    });
+    // Hide the success message after 5 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 5000);
   };
 
   return (
@@ -100,17 +77,35 @@ const ContactUs = () => {
           </div>
 
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {isSubmitted && (
+              <Alert className="mb-6 bg-yellow-400 border-yellow-500 text-ats-navy">
+                <AlertTitle className="font-semibold">✅ Thank you! Your request has been received.</AlertTitle>
+                <AlertDescription>
+                  We'll get back to you shortly.
+                </AlertDescription>
+              </Alert>
+            )}
+            
+            <form 
+              action="https://formsubmit.co/ambition.trans@gmail.com" 
+              method="POST"
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6"
+            >
+              {/* Hidden input for formsubmit.co to prevent redirects */}
+              <input type="hidden" name="_next" value={window.location.href} />
+              <input type="hidden" name="_captcha" value="false" />
+              
               <div>
                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-ats-navy">
-                  Name *
+                  Full Name *
                 </label>
                 <Input
                   id="name"
+                  type="text"
+                  {...register("name", { required: true })}
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
+                  placeholder="Your Full Name"
                   className="w-full"
                   required
                 />
@@ -119,15 +114,15 @@ const ContactUs = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="email" className="block mb-2 text-sm font-medium text-ats-navy">
-                    Email
+                    Email *
                   </label>
                   <Input
                     id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Your Email"
                     type="email"
+                    {...register("email", { required: true })}
+                    name="email"
+                    placeholder="Your Email"
+                    required
                   />
                 </div>
 
@@ -137,9 +132,9 @@ const ContactUs = () => {
                   </label>
                   <Input
                     id="phone"
+                    type="tel"
+                    {...register("phone", { required: true })}
                     name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     placeholder="Your Phone Number"
                     required
                   />
@@ -153,9 +148,9 @@ const ContactUs = () => {
                   </label>
                   <Input
                     id="moveFrom"
+                    type="text"
+                    {...register("moveFrom", { required: true })}
                     name="moveFrom"
-                    value={formData.moveFrom}
-                    onChange={handleChange}
                     placeholder="Origin Address"
                     required
                   />
@@ -167,9 +162,9 @@ const ContactUs = () => {
                   </label>
                   <Input
                     id="moveTo"
+                    type="text"
+                    {...register("moveTo", { required: true })}
                     name="moveTo"
-                    value={formData.moveTo}
-                    onChange={handleChange}
                     placeholder="Destination Address"
                     required
                   />
@@ -183,10 +178,9 @@ const ContactUs = () => {
                 <div className="relative">
                   <Input
                     id="moveDate"
-                    name="moveDate"
-                    value={formData.moveDate}
-                    onChange={handleChange}
                     type="date"
+                    {...register("moveDate")}
+                    name="moveDate"
                     className="w-full"
                   />
                   <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 text-ats-gray pointer-events-none" size={18} />
@@ -199,9 +193,8 @@ const ContactUs = () => {
                 </label>
                 <Textarea
                   id="message"
+                  {...register("message")}
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   placeholder="Any specific requirements or questions?"
                   className="min-h-[120px]"
                 />

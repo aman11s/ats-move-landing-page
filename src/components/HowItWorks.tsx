@@ -12,7 +12,9 @@ const ProcessStep = ({ step, title, description, icon }: ProcessStepProps) => {
   return (
     <div className="flex flex-col md:flex-row gap-6 items-center md:items-start mb-12 relative">
       <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-ats-blue rounded-full flex items-center justify-center shadow-lg z-10">
-        <div className="text-white">{icon}</div>
+        <div className="text-white flex items-center justify-center">
+          {icon}
+        </div>
       </div>
       
       <div className="flex-1">
@@ -33,22 +35,22 @@ const HowItWorks = () => {
     {
       title: "Book a Service",
       description: "Fill out our simple form or call us to schedule your move. We'll discuss your requirements and provide a free quote.",
-      icon: <Calendar size={28} />
+      icon: <Calendar size={24} />
     },
     {
       title: "Pack with Care",
       description: "Our team arrives with quality packing materials to carefully pack and label all your belongings for the move.",
-      icon: <Package size={28} />
+      icon: <Package size={24} />
     },
     {
       title: "Safe Transport",
       description: "We load your items into our modern, well-maintained vehicles and transport them safely to the destination.",
-      icon: <Truck size={28} />
+      icon: <Truck size={24} />
     },
     {
       title: "Deliver & Setup",
       description: "We unload, unpack and set up your belongings at your new location according to your preferences.",
-      icon: <Home size={28} />
+      icon: <Home size={24} />
     }
   ];
 
