@@ -25,8 +25,8 @@ const MovingTruckIllustration = () => (
     <rect x="330" y="200" width="30" height="20" rx="3" fill="#4BB4F7" />
     
     {/* Logo on Truck */}
-    <text x="85" y="200" fontFamily="Arial" fontSize="16" fontWeight="bold" fill="white">ATS PACKERS</text>
-    <text x="100" y="220" fontFamily="Arial" fontSize="14" fontWeight="bold" fill="white">& MOVERS</text>
+    <text x="80" y="210" fontFamily="Arial" fontSize="14" fontWeight="bold" fill="white">ATS PACKERS</text>
+    <text x="95" y="225" fontFamily="Arial" fontSize="14" fontWeight="bold" fill="white">& MOVERS</text>
 
     {/* Boxes in Truck */}
     <rect x="210" y="190" width="25" height="25" rx="2" fill="#5A7D9A" />
