@@ -74,6 +74,7 @@ const Testimonials = () => {
   const [visibleTestimonials, setVisibleTestimonials] = useState<TestimonialProps[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Fix for the infinite re-render loop by adding dependencies to useEffect
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -85,17 +86,18 @@ const Testimonials = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, []); // Empty dependency array - run only once on mount
 
+  // Add proper dependencies to this useEffect to prevent infinite loops
   useEffect(() => {
     const testimonialsToShow = isMobile ? 1 : 3;
-    setVisibleTestimonials(
-      testimonials.slice(
-        currentIndex,
-        currentIndex + testimonialsToShow
-      )
+    const visibleTestimonialsSlice = testimonials.slice(
+      currentIndex,
+      currentIndex + testimonialsToShow
     );
-  }, [currentIndex, isMobile, testimonials]);
+    
+    setVisibleTestimonials(visibleTestimonialsSlice);
+  }, [currentIndex, isMobile, testimonials]); // Properly list all dependencies
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
