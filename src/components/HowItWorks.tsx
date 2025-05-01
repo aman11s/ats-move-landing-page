@@ -19,7 +19,7 @@ const ProcessStep = ({ step, title, description, icon }: ProcessStepProps) => {
       
       <div className="flex-1">
         <div className="bg-ats-white p-6 rounded-xl shadow-md">
-          <div className="absolute -top-2 left-5 md:left-7 bg-ats-blue text-white text-sm font-bold px-3 py-1 rounded-full">
+          <div className="absolute -top-2 left-5 md:left-16 bg-ats-blue text-white text-sm font-bold px-3 py-1 rounded-full">
             Step {step}
           </div>
           <h3 className="text-xl font-semibold mb-3 text-ats-navy pt-4">{title}</h3>
