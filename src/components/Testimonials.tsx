@@ -14,11 +14,11 @@ const TestimonialCard = ({ name, position, testimonial, image }: TestimonialProp
   return (
     <div className="card flex flex-col h-full">
       <div className="flex items-center mb-6">
-        <div className="w-16 h-16 rounded-full bg-ats-blue/20 flex items-center justify-center mr-4">
-          <span className="text-xl font-bold text-ats-blue">{name.charAt(0)}</span>
+        <div className="w-16 h-16 rounded-full bg-ats-orange/20 flex items-center justify-center mr-4">
+          <span className="text-xl font-bold text-ats-orange">{name.charAt(0)}</span>
         </div>
         <div>
-          <h4 className="text-lg font-semibold text-ats-navy">{name}</h4>
+          <h4 className="text-lg font-semibold text-ats-black">{name}</h4>
           <p className="text-sm text-ats-gray">{position}</p>
         </div>
       </div>
@@ -74,7 +74,6 @@ const Testimonials = () => {
   const [visibleTestimonials, setVisibleTestimonials] = useState<TestimonialProps[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Fix for the infinite re-render loop by adding dependencies to useEffect
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -86,18 +85,17 @@ const Testimonials = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); // Empty dependency array - run only once on mount
+  }, []);
 
-  // Add proper dependencies to this useEffect to prevent infinite loops
   useEffect(() => {
     const testimonialsToShow = isMobile ? 1 : 3;
-    const visibleTestimonialsSlice = testimonials.slice(
-      currentIndex,
-      currentIndex + testimonialsToShow
+    setVisibleTestimonials(
+      testimonials.slice(
+        currentIndex,
+        currentIndex + testimonialsToShow
+      )
     );
-    
-    setVisibleTestimonials(visibleTestimonialsSlice);
-  }, [currentIndex, isMobile, testimonials]); // Properly list all dependencies
+  }, [currentIndex, isMobile, testimonials]);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
@@ -113,9 +111,9 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="section-container bg-ats-aqua">
+    <section id="testimonials" className="section-container bg-ats-beige">
       <div className="container mx-auto">
-        <h2 className="section-title text-center">Happy <span className="text-ats-blue">Clients</span></h2>
+        <h2 className="section-title text-center">Happy <span className="text-ats-orange">Clients</span></h2>
         <p className="section-subtitle text-center">
           Don't just take our word for it. Here's what our customers have to say about our services.
         </p>
@@ -139,7 +137,7 @@ const Testimonials = () => {
               size="icon" 
               onClick={handlePrev} 
               disabled={currentIndex === 0}
-              className="mr-4 border-ats-blue text-ats-blue hover:bg-ats-blue hover:text-white"
+              className="mr-4 border-ats-orange text-ats-orange hover:bg-ats-orange hover:text-white"
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
@@ -148,7 +146,7 @@ const Testimonials = () => {
               size="icon" 
               onClick={handleNext}
               disabled={isMobile ? currentIndex >= testimonials.length - 1 : currentIndex >= testimonials.length - 3}
-              className="border-ats-blue text-ats-blue hover:bg-ats-blue hover:text-white"
+              className="border-ats-orange text-ats-orange hover:bg-ats-orange hover:text-white"
             >
               <ArrowRight className="h-5 w-5" />
             </Button>

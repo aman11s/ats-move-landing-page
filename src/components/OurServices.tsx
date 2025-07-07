@@ -11,13 +11,13 @@ type ServiceCardProps = {
 const ServiceCard = ({ title, description, icon }: ServiceCardProps) => {
   return (
     <div className="card flex flex-col h-full">
-      <div className="mb-4 p-4 bg-ats-blue bg-opacity-10 inline-flex rounded-lg">
-        <div className="text-ats-blue">{icon}</div>
+      <div className="mb-4 p-4 bg-ats-orange bg-opacity-10 inline-flex rounded-lg">
+        <div className="text-ats-orange">{icon}</div>
       </div>
-      <h3 className="text-xl font-semibold mb-3 text-ats-navy">{title}</h3>
+      <h3 className="text-xl font-semibold mb-3 text-ats-black">{title}</h3>
       <p className="text-ats-gray mb-6">{description}</p>
       <div className="mt-auto">
-        <Button variant="ghost" className="text-ats-blue hover:text-ats-blue hover:bg-ats-blue/10 p-0">
+        <Button variant="ghost" className="text-ats-orange hover:text-ats-orange hover:bg-ats-orange/10 p-0">
           Learn More →
         </Button>
       </div>
@@ -50,9 +50,9 @@ const OurServices = () => {
   ];
 
   return (
-    <section id="services" className="section-container bg-ats-aqua">
+    <section id="services" className="section-container bg-ats-beige">
       <div className="container mx-auto">
-        <h2 className="section-title text-center">Our <span className="text-ats-blue">Services</span></h2>
+        <h2 className="section-title text-center">Our <span className="text-ats-orange">Services</span></h2>
         <p className="section-subtitle text-center">
           We offer comprehensive relocation services tailored to meet your specific requirements.
         </p>

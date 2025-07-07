@@ -1,48 +1,71 @@
 
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import { Calendar, FileText, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { useForm } from 'react-hook-form';
-
-type FormData = {
-  name: string;
-  email: string;
-  phone: string;
-  moveFrom: string;
-  moveTo: string;
-  moveDate: string;
-  message: string;
-};
+import { useToast } from '@/components/ui/use-toast';
 
 const ContactUs = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    moveFrom: '',
+    moveTo: '',
+    moveDate: '',
+    message: ''
+  });
 
-  const onSubmit = (data: FormData) => {
-    // This function will be overridden by the form's action attribute
-    // But we'll use it to show our success message and reset the form
-    setIsSubmitted(true);
-    reset();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     
-    // Hide the success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+    // Form validation
+    if (!formData.name || !formData.phone || !formData.moveFrom || !formData.moveTo) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    // In a real application, you'd send this data to your backend
+    console.log('Form submitted:', formData);
+    
+    toast({
+      title: "Quote Request Sent",
+      description: "We'll get back to you with a free quote shortly!",
+    });
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      moveFrom: '',
+      moveTo: '',
+      moveDate: '',
+      message: ''
+    });
   };
 
   return (
-    <section id="contact" className="section-container bg-ats-white">
+    <section id="contact" className="section-container bg-white">
       <div className="container mx-auto">
-        <h2 className="section-title text-center">Contact <span className="text-ats-blue">Us</span></h2>
+        <h2 className="section-title text-center">Contact <span className="text-ats-orange">Us</span></h2>
         <p className="section-subtitle text-center">
           Ready to make your move stress-free? Get in touch with us today for a free quote!
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-          <div className="bg-ats-blue rounded-xl p-8 text-white">
+          <div className="bg-ats-orange rounded-xl p-8 text-white">
             <h3 className="text-2xl font-semibold mb-6">Get A Free Quote</h3>
             <p className="mb-8">
               Fill out the form, and our team will get back to you with a detailed quote tailored to your specific requirements.
@@ -53,8 +76,7 @@ const ContactUs = () => {
                 <Phone className="mr-4 flex-shrink-0" />
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <p>+91 9377111606</p>
-                  <p>+91 9974310525</p>
+                  <p>+91 98765 43210</p>
                 </div>
               </div>
               
@@ -62,7 +84,7 @@ const ContactUs = () => {
                 <Mail className="mr-4 flex-shrink-0" />
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p>ambition.trans@gmail.com</p>
+                  <p>info@atspackersmovers.com</p>
                 </div>
               </div>
               
@@ -78,35 +100,17 @@ const ContactUs = () => {
           </div>
 
           <div>
-            {isSubmitted && (
-              <Alert className="mb-6 bg-yellow-400 border-yellow-500 text-ats-navy">
-                <AlertTitle className="font-semibold">✅ Thank you! Your request has been received.</AlertTitle>
-                <AlertDescription>
-                  We'll get back to you shortly.
-                </AlertDescription>
-              </Alert>
-            )}
-            
-            <form 
-              action="https://formsubmit.co/ambition.trans@gmail.com" 
-              method="POST"
-              onSubmit={handleSubmit(onSubmit)}
-              className="space-y-6"
-            >
-              {/* Hidden input for formsubmit.co to prevent redirects */}
-              <input type="hidden" name="_next" value={window.location.href} />
-              <input type="hidden" name="_captcha" value="false" />
-              
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block mb-2 text-sm font-medium text-ats-navy">
-                  Full Name *
+                <label htmlFor="name" className="block mb-2 text-sm font-medium text-ats-black">
+                  Name *
                 </label>
                 <Input
                   id="name"
-                  type="text"
-                  {...register("name", { required: true })}
                   name="name"
-                  placeholder="Your Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
                   className="w-full"
                   required
                 />
@@ -114,28 +118,28 @@ const ContactUs = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-ats-navy">
-                    Email *
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-ats-black">
+                    Email
                   </label>
                   <Input
                     id="email"
-                    type="email"
-                    {...register("email", { required: true })}
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Your Email"
-                    required
+                    type="email"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block mb-2 text-sm font-medium text-ats-navy">
+                  <label htmlFor="phone" className="block mb-2 text-sm font-medium text-ats-black">
                     Phone Number *
                   </label>
                   <Input
                     id="phone"
-                    type="tel"
-                    {...register("phone", { required: true })}
                     name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="Your Phone Number"
                     required
                   />
@@ -144,28 +148,28 @@ const ContactUs = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="moveFrom" className="block mb-2 text-sm font-medium text-ats-navy">
+                  <label htmlFor="moveFrom" className="block mb-2 text-sm font-medium text-ats-black">
                     Moving From *
                   </label>
                   <Input
                     id="moveFrom"
-                    type="text"
-                    {...register("moveFrom", { required: true })}
                     name="moveFrom"
+                    value={formData.moveFrom}
+                    onChange={handleChange}
                     placeholder="Origin Address"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="moveTo" className="block mb-2 text-sm font-medium text-ats-navy">
+                  <label htmlFor="moveTo" className="block mb-2 text-sm font-medium text-ats-black">
                     Moving To *
                   </label>
                   <Input
                     id="moveTo"
-                    type="text"
-                    {...register("moveTo", { required: true })}
                     name="moveTo"
+                    value={formData.moveTo}
+                    onChange={handleChange}
                     placeholder="Destination Address"
                     required
                   />
@@ -173,15 +177,16 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="moveDate" className="block mb-2 text-sm font-medium text-ats-navy">
+                <label htmlFor="moveDate" className="block mb-2 text-sm font-medium text-ats-black">
                   Preferred Moving Date
                 </label>
                 <div className="relative">
                   <Input
                     id="moveDate"
-                    type="date"
-                    {...register("moveDate")}
                     name="moveDate"
+                    value={formData.moveDate}
+                    onChange={handleChange}
+                    type="date"
                     className="w-full"
                   />
                   <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 text-ats-gray pointer-events-none" size={18} />
@@ -189,13 +194,14 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block mb-2 text-sm font-medium text-ats-navy">
+                <label htmlFor="message" className="block mb-2 text-sm font-medium text-ats-black">
                   Additional Details
                 </label>
                 <Textarea
                   id="message"
-                  {...register("message")}
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Any specific requirements or questions?"
                   className="min-h-[120px]"
                 />

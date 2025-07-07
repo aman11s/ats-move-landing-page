@@ -10,10 +10,10 @@ type FeatureCardProps = {
 const FeatureCard = ({ title, description, icon }: FeatureCardProps) => {
   return (
     <div className="card flex flex-col items-center text-center h-full">
-      <div className="mb-4 p-4 bg-ats-blue bg-opacity-10 rounded-full">
-        <div className="text-ats-blue">{icon}</div>
+      <div className="mb-4 p-4 bg-ats-orange bg-opacity-10 rounded-full">
+        <div className="text-ats-orange">{icon}</div>
       </div>
-      <h3 className="text-xl font-semibold mb-3 text-ats-navy">{title}</h3>
+      <h3 className="text-xl font-semibold mb-3 text-ats-black">{title}</h3>
       <p className="text-ats-gray">{description}</p>
     </div>
   );
@@ -44,9 +44,9 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section id="whyus" className="section-container bg-ats-white">
+    <section id="whyus" className="section-container bg-white">
       <div className="container mx-auto">
-        <h2 className="section-title text-center">Why Choose <span className="text-ats-blue">ATS</span> Packers & Movers</h2>
+        <h2 className="section-title text-center">Why Choose <span className="text-ats-orange">ATS</span> Packers & Movers</h2>
         <p className="section-subtitle text-center">
           With years of experience and thousands of successful relocations, we're committed to making your move stress-free.
         </p>

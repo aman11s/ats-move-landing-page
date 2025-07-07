@@ -15,23 +15,23 @@ const MovingTruckIllustration = () => (
     <rect x="340" y="270" width="40" height="10" fill="white" />
 
     {/* Truck Body */}
-    <rect x="50" y="190" width="150" height="60" rx="5" fill="#1F6FEB" />
+    <rect x="50" y="190" width="150" height="60" rx="5" fill="#F26522" />
     <rect x="200" y="180" width="120" height="70" rx="5" fill="white" />
-    <rect x="200" y="215" width="120" height="35" rx="5" fill="#1F6FEB" />
-    <rect x="50" y="215" width="150" height="35" rx="5" fill="#1F6FEB" />
+    <rect x="200" y="215" width="120" height="35" rx="5" fill="#F26522" />
+    <rect x="50" y="215" width="150" height="35" rx="5" fill="#F26522" />
     
     {/* Truck Cabin */}
-    <rect x="320" y="190" width="50" height="60" rx="5" fill="#1F6FEB" />
-    <rect x="330" y="200" width="30" height="20" rx="3" fill="#4BB4F7" />
+    <rect x="320" y="190" width="50" height="60" rx="5" fill="#F26522" />
+    <rect x="330" y="200" width="30" height="20" rx="3" fill="#88CCF1" />
     
     {/* Logo on Truck */}
-    <text x="80" y="210" fontFamily="Arial" fontSize="14" fontWeight="bold" fill="white">ATS PACKERS</text>
-    <text x="95" y="225" fontFamily="Arial" fontSize="14" fontWeight="bold" fill="white">& MOVERS</text>
+    <text x="85" y="200" fontFamily="Arial" fontSize="16" fontWeight="bold" fill="white">ATS PACKERS</text>
+    <text x="100" y="220" fontFamily="Arial" fontSize="14" fontWeight="bold" fill="white">& MOVERS</text>
 
     {/* Boxes in Truck */}
-    <rect x="210" y="190" width="25" height="25" rx="2" fill="#5A7D9A" />
-    <rect x="245" y="190" width="20" height="20" rx="2" fill="#5A7D9A" />
-    <rect x="275" y="195" width="30" height="15" rx="2" fill="#5A7D9A" />
+    <rect x="210" y="190" width="25" height="25" rx="2" fill="#C49E6C" />
+    <rect x="245" y="190" width="20" height="20" rx="2" fill="#C49E6C" />
+    <rect x="275" y="195" width="30" height="15" rx="2" fill="#C49E6C" />
 
     {/* Wheels */}
     <circle cx="100" cy="250" r="20" fill="black" />
